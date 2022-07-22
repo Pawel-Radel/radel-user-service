@@ -1,4 +1,4 @@
-package com.radel.web;
+package com.radel.radeluserservice.web;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.AllArgsConstructor;
 
 @RestController
-@RequestMapping("/users")
 @AllArgsConstructor
+@RequestMapping("/management")
 public class UserController {
 
     @GetMapping("/test")
     String getUsers() {
         return "user1";
     }
+
 }
