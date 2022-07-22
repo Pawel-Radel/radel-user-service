@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UserController {
 
-    @GetMapping("/dupa")
+    @GetMapping("/test")
     String getUsers() {
         return "user1";
     }
