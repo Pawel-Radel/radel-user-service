@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "PawelTestEvent",
+  "namespace": "com.radel.core.events",
+  "fields": [
+    {
+      "name": "tenantId",
+      "type": "string"
+    }
+  ]
+}
