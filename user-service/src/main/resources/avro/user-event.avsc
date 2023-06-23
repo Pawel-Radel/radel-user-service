@@ -1,0 +1,65 @@
+{
+  "namespace": "com.radel.core",
+  "type": "record",
+  "name": "UserEvent",
+  "fields": [
+    {
+      "name": "userId",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "surname",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "createdTimestamp",
+      "type": "long",
+      "logicalType": "timestamp-millis"},
+    {
+      "name": "enabled",
+      "type": "boolean"
+    },
+    {
+      "name": "emailVerified",
+      "type": "boolean"
+    },
+    {
+      "name": "attributes",
+      "type": {
+        "type": "map",
+        "values": "string"
+      },
+      "default": {}
+    },
+    {
+      "name": "roles",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "default": []
+    },
+    {
+      "name": "groups",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "default": []
+    }
+  ]
+}
+
+
+
+
+
+

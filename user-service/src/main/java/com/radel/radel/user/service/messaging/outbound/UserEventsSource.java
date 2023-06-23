@@ -8,11 +8,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.radel.radel.user.service.messaging.events.UserEvent;
+import com.radel.radel.user.service.messaging.events.UserEventType;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Component;
 
-import com.radel.core.events.user.UserEvent;
 import com.radel.radel.user.service.configurations.properties.OutputEventsProperties;
 import com.radel.radel.user.service.service.UserChangesNotifier;
 import com.radel.radel.user.service.service.UserQueryService;
@@ -38,18 +39,8 @@ public class UserEventsSource implements UserChangesNotifier {
     }
 
     private UserEvent toUserEvent(User user) {
-        return UserEvent.newBuilder()
-                .setUserId(user.getUserId())
-                .setName(ofNullable(user.getName()).orElse(EMPTY_STRING))
-                .setSurname(ofNullable(user.getSurname()).orElse(EMPTY_STRING))
-                .setEmail(user.getEmail())
-                .setCreatedTimestamp(ofNullable(user.getCreatedTimestamp()).map(Instant::ofEpochMilli).orElse(null))
-                .setEnabled(user.getEnabled())
-                .setEmailVerified(user.getEmailVerified())
-                .setAttributes(ofNullable(user.getAttributes()).orElse(new HashMap<>(0)))
-                .setRoles(ofNullable(user.getRoles()).orElse(new ArrayList<>(0)))
-                .setGroups(ofNullable(user.getGroups()).orElse(new ArrayList<>(0)))
-                .build();
+
+        return new UserEvent(null, user, UserEventType.UPDATE);
     }
 }
 

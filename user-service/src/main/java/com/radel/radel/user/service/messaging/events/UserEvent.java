@@ -1,5 +1,6 @@
 package com.radel.radel.user.service.messaging.events;
 
+import lombok.NoArgsConstructor;
 import org.springframework.context.ApplicationEvent;
 
 import com.radel.services.user.api.User;

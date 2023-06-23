@@ -68,6 +68,12 @@
             <groupId>com.radel.core</groupId>
             <artifactId>cloud-stream-extension-starter</artifactId>
             <version>1.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-schema-registry-client</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
@@ -84,11 +90,7 @@
             <artifactId>spring-data-commons</artifactId>
             <version>2.7.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.radel.core</groupId>
-            <artifactId>radel-core-codec</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -96,6 +98,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <name>radel/test-${project.artifactId}:${project.version}</name>
+                    </image>
+                    <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.avro</groupId>
